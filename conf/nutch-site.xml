@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+ <property>
+   <name>http.agent.name</name>
+   <value>My Nutch Spider </value>
+ </property>
+
+ <property>
+    <name>storage.data.store.class</name>
+    <value>org.apache.gora.mongodb.store.MongoStore</value>
+    <description>Default class for storing data</description>
+  </property>
+
+<!--
+ <property>
+    <name>storage.data.store.class</name>
+    <value>org.apache.gora.hbase.store.HBaseStore</value>
+    <description>Default class for storing data</description>
+  </property>
+-->
+  <property>
+    <name>plugin.includes</name>
+    <value>protocol-(http|httpclient)|urlfilter-regex|index-(basic|more)|query-(basic|site|url|lang)|indexer-mongodb|nutch-extensionpoints|parse-(text|html|msexcel|msword|mspowerpoint|pdf)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|parse-(html|tika|metatags)|index-(basic|anchor|more|metadata)</value>
+  </property>
+ 
+  <property>
+  <name>elastic.host</name>
+  <value>127.0.0.1</value>
+  <description>The hostname to send documents to using TransportClient.
+  Either host and port must be defined or cluster.
+  </description>
+</property>
+
+<property>
+  <name>elastic.port</name>
+  <value>9200</value>
+  <description>
+  The port to connect to using TransportClient.
+  </description>
+</property>
+
+<property>
+  <name>elastic.cluster</name>
+  <value>ravi</value>
+  <description>The cluster name to discover. Either host and potr must
+  be defined or cluster.
+  </description>
+</property>
+
+<property>
+  <name>elastic.index</name>
+  <value>nutch</value>
+  <description>
+  The name of the elasticsearch index. Will normally be autocreated if it
+  doesn't exist.
+  </description>
+</property>
+
+<property>
+  <name>elastic.max.bulk.docs</name>
+  <value>250</value>
+  <description>
+  The number of docs in the batch that will trigger a flush to
+  elasticsearch.
+  </description>
+</property>
+
+<property>
+  <name>elastic.max.bulk.size</name>
+  <value>2500500</value>
+  <description>
+  The total length of all indexed text in a batch that will trigger a
+  flush to elasticsearch, by checking after every document for excess 
+  of this amount.
+  </description>
+</property>
+
+<property>
+ <name>mongo.host_port</name>
+  <value>127.0.0.1:27017</value>
+</property>
+<property><name>mongo.database</name><value>nutch</value></property>
+ <property><name>mongo.collection</name><value>doc</value></property>
+ <property><name>mongo.max.insert.docs</name><value>30</value></property>
+ <property><name>mongo.max.delete.docs</name><value>30</value></property>
+
+</configuration>
